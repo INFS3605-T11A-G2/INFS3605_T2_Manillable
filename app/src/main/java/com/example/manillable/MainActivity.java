@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //testing commit #2
-        //testing ownership transfer
+        //testing ownership transfer #2
     }
 }
