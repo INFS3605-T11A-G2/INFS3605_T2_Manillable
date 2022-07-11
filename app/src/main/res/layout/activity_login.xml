@@ -1,33 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:width="390dp"
-    android:height="844dp"
-    android:viewportWidth="390"
-    android:viewportHeight="844"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    >
+    tools:context=".LoginActivity" >
+
 
     <ImageView
-        android:id="@+id/removebg_pr"
-        android:layout_width="142dp"
-        android:layout_height="142dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/iv_essicon"
+        android:layout_width="153dp"
+        android:layout_height="169dp"
+        android:layout_gravity="center"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="102dp"
-        android:layout_marginBottom="600dp"
-        android:layout_marginEnd="221dp"
-        android:background="@drawable/essicon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="37dp"
+        app:srcCompat="@drawable/essicon" />
+
+    <TextView
+        android:id="@+id/txt_e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_essicon"
+        android:layout_marginStart="-26dp"
+        android:layout_marginTop="-11dp"
+        android:layout_toEndOf="@+id/iv_essicon"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/e"
+        android:textColor="@color/black"
+        android:textSize="120dp" />
+
+    <TextView
+        android:id="@+id/txt_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txt_e"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/txt_e"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/s"
+        android:textColor="@color/black"
+        android:textSize="120dp" />
+
+    <TextView
+        android:id="@+id/txt_s2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txt_s"
+        android:layout_marginStart="-5dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/txt_s"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/s"
+        android:textColor="@color/black"
+        android:textSize="120dp" />
+
+    <TextView
+        android:id="@+id/txt_essName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/iv_essicon"
+        android:layout_alignBottom="@+id/iv_essicon"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/essName"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txt_Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_essName"
+        android:layout_alignStart="@+id/txt_essName"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/login"
+        android:textColor="@color/black"
+        android:textSize="29dp" />
+
+    <EditText
+        android:id="@+id/user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_Login"
+        android:layout_alignStart="@+id/txt_Login"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:tooltipText="email"
+        android:inputType="textEmailAddress" />
 
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Manillable</string>
     <string name="e">e</string>
+    <string name="s">s</string>
+    <string name="essName">ebusiness software solutions</string>
+    <string name="login">Login</string>
 </resources>
