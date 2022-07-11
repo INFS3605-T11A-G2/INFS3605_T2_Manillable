@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "413718363842",
+    "project_id": "manillable-1657552547902",
+    "storage_bucket": "manillable-1657552547902.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413718363842:android:3f180056b739c26545855b",
+        "android_client_info": {
+          "package_name": "com.example.manillable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413718363842-sjdqrc821222h40uotqeatlnn98lsvqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd9F3pFlUPvz18BNAyg_4OF0XxnAZdWHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413718363842-iolh3eur4sg4m7rt60so0h3u4fd6uaj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
