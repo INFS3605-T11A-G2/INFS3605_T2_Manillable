@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
 
         mAuth = FirebaseAuth.getInstance();
         email = (EditText) findViewById(R.id.user_email);
@@ -112,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signIn() {
+        Log.d(TAG, "SignIn: Activated");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }

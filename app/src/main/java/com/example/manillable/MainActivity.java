@@ -2,9 +2,14 @@ package com.example.manillable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button launch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,5 +17,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //testing commit #2
         //testing ownership transfer #2
+
+        launch = (Button) findViewById(R.id.btn_launch);
+
+        launch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
