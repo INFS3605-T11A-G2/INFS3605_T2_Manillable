@@ -91,9 +91,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:fontFamily="@font/inter_extralight"
-        android:hint="@string/e_mail" />
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/user_password"
