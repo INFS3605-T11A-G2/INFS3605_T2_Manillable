@@ -21,9 +21,7 @@ import android.view.ViewGroup;
 public class InvoiceFragment extends Fragment {
     private static final String TAG = "InvoiceFragment";
     private RecyclerView mRecyclerView;
-    private InvoiceListAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private InvoiceViewModel mInvoiceViewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,6 +36,7 @@ public class InvoiceFragment extends Fragment {
         // Required empty public constructor
     }
 //
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -55,44 +54,35 @@ public class InvoiceFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//        mInvoiceViewModel = new ViewModelProvider(this).get(InvoiceViewModel.class);
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_invoices, container, false);
-//
-//        mRecyclerView = view.findViewById(R.id.rv_InvoiceList);
-//        mRecyclerView.setHasFixedSize(true);
-//
-//        mLayoutManager = new LinearLayoutManager(view.getContext());
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-//
-//        InvoiceListAdapter.RecyclerViewClickListener listener = new InvoiceListAdapter.RecyclerViewClickListener() {
-//            @Override
-//            public void onClick(View view, String invoiceSymbol) {
-//                Log.d(TAG, invoiceSymbol);
-//                launchDetailActivity(invoiceSymbol);
-//            }
-//        };
-//
-//        mAdapter = new InvoiceListAdapter(new InvoiceListAdapter.InvoiceDiff());
-//        mRecyclerView.setAdapter(mAdapter);
-//
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_invoices, container, false);
-//    }
-//
-//    private void launchDetailActivity(String invoiceSymbol) {
-//        Log.d(TAG, "Detail Activity Launched");
-//    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_invoices, container, false);
+
+        mRecyclerView = view.findViewById(R.id.rv_InvoiceList);
+        mRecyclerView.setHasFixedSize(true);
+
+        mLayoutManager = new LinearLayoutManager(view.getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+
+
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_invoices, container, false);
+    }
+
+    private void launchDetailActivity(String invoiceSymbol) {
+        Log.d(TAG, "Detail Activity Launched");
+    }
 }
