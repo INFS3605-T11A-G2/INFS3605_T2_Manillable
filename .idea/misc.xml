@@ -18,13 +18,28 @@
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/fragment_clients.xml" value="0.30416666666666664" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/fragment_home.xml" value="0.146875" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/fragment_invoices.xml" value="0.30416666666666664" />
-        <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/fragment_profile.xml" value="0.17916666666666667" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/invoice__card_row.xml" value="0.4" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/invoice_card_row.xml" value="0.30416666666666664" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/invoices_recyclerview.xml" value="0.30416666666666664" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/login_screen.xml" value="0.3046875" />
         <entry key="..\:/GitHubLocal/GitHub/INFS3605_T2_Manillable/app/src/main/res/layout/sign_up_screen.xml" value="0.3046875" />
         <entry key="..\:/GitHubLocal/GitHub/Manillable/app/src/main/res/layout/iphone_13_pro__13__12_pro__12___1.xml" value="0.165625" />
+        <entry key="app/src/main/res/layout/activity_landing.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/fragment_cameratab.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/fragment_clients.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_clientstab.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_hometab.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_invoices.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_invoicestab.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_profiletab.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.27395833333333336" />
       </map>
     </option>
   </component>

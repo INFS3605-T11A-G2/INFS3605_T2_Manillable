@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment" >
+    tools:context="com.example.manillable.MainActivity"
+    >
 
 
     <EditText
@@ -17,7 +18,7 @@
         android:layout_marginTop="298dp"
         android:ems="12"
         android:hint="Enter Name"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/amount"
