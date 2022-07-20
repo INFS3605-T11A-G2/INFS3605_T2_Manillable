@@ -54,6 +54,7 @@ public class HomeFragment extends Fragment {
         });
 
         // Inflate the layout for this fragment
+        Log.d(TAG, "View Inflated");
         return view;
     }
 }

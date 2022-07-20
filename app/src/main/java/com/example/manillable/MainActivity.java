@@ -6,11 +6,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.manillable.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     ActivityMainBinding binding;
 
     @Override
@@ -25,23 +27,25 @@ public class MainActivity extends AppCompatActivity {
             switch(item.getItemId()){
                 case R.id.home:
                     replaceFragment(new HomeFragment());
+                    Log.d(TAG, "Home Fragment: Run");
                     break;
                 case R.id.clients:
                     replaceFragment(new ClientsFragment());
+                    Log.d(TAG, "Client Fragment: Run");
                     break;
                 case R.id.camera:
                     replaceFragment(new CameraFragment());
+                    Log.d(TAG, "Camera Fragment: Run");
                     break;
                 case R.id.invoices:
                     replaceFragment(new InvoiceFragment());
+                    Log.d(TAG, "Invoice Fragment: Run");
                     break;
                 case R.id.profile:
                     replaceFragment(new ProfileFragment());
+                    Log.d(TAG, "Profile Fragment: Run");
                     break;
-
             }
-
-
             return true;
         });
 
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
+        Log.d(TAG, "Fragment Replaced");
     }
 
 }
