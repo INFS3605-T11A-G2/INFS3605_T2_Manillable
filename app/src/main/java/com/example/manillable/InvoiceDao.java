@@ -15,7 +15,7 @@ public interface InvoiceDao {
     List<Invoice> getAllInvoice();
 
     @Insert
-    void addInvoice(Invoice invoice);
+    void addInvoice(Invoice...invoice);
 
     @Update
     void updateInvoice(Invoice invoice);
