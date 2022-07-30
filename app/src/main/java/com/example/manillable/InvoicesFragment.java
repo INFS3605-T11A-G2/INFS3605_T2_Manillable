@@ -9,11 +9,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 public class InvoicesFragment extends Fragment {
     FloatingActionButton fab;
+    RecyclerView mInvoiceList;
+    private InvoiceAdapter invoiceAdapter;
 
     @Nullable
     @Override
@@ -28,6 +35,29 @@ public class InvoicesFragment extends Fragment {
             }
         });
 
+        initRecyclerView(view);
+        loadInvoiceList();
+
         return view;
+    }
+    private void initRecyclerView(View view) {
+        mInvoiceList = view.findViewById(R.id.rv_InvoiceList);
+        mInvoiceList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL);
+        mInvoiceList.addItemDecoration(dividerItemDecoration);
+
+        invoiceAdapter = new InvoiceAdapter(getActivity().getApplicationContext());
+
+        mInvoiceList.setAdapter(invoiceAdapter);
+
+    }
+
+    private void loadInvoiceList() {
+        DatabaseHelper databaseHelper = DatabaseHelper.getDB(getActivity().getApplicationContext());
+
+        List<Invoice> invoiceList = databaseHelper.invoiceDao().getAllInvoice();
+
+        invoiceAdapter.setmInvoiceList(invoiceList);
     }
 }
