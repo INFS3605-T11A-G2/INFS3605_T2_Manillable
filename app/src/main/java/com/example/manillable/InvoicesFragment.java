@@ -30,8 +30,7 @@ public class InvoicesFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), CreateNewInvoice.class);
-                startActivity(intent);
+                startActivityForResult(new Intent(getActivity().getApplicationContext(), CreateNewInvoice.class), 100);
             }
         });
 
@@ -59,5 +58,13 @@ public class InvoicesFragment extends Fragment {
         List<Invoice> invoiceList = databaseHelper.invoiceDao().getAllInvoice();
 
         invoiceAdapter.setmInvoiceList(invoiceList);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 100) {
+            loadInvoiceList();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
