@@ -22,7 +22,6 @@
     <style name="Theme.Manillable.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="FloatingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
-        <item name="shapeAppearanceOverlay">@style/FabShapeStyle_Rectangle</item>
     </style>
 
     <style name="FabShapeStyle_Rectangle" parent="ShapeAppearance.MaterialComponents.SmallComponent">

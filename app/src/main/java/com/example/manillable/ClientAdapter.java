@@ -25,18 +25,24 @@ public class ClientAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHol
     }
 
 
+//    @NonNull
+//    @Override
+//    public ClientAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//        View view = LayoutInflater.from(context).inflate(R.layout.invoice_card_row, parent, false);
+//
+//        return new MyViewHolder(view);
+//    }
+
     @NonNull
     @Override
-    public ClientAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.invoice_card_row, parent, false);
-
-        return new MyViewHolder(view);
+    public InvoiceAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull InvoiceAdapter.MyViewHolder holder, int position) {
-        holder.name.setText(this.mInvoiceList.get(position).getClientName());
-        holder.amount.setText(this.mInvoiceList.get(position).getAmount());
+//        holder.name.setText(this.mInvoiceList.get(position).getClientName());
+//        holder.amount.setText(this.mInvoiceList.get(position).getAmount());
     }
 
     @Override

@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@android:color/white">
+
+    <Button
+        android:id="@+id/button_from_camera"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginEnd="211dp"
+        android:drawableTop="@drawable/ic_baseline_camera_alt_24"
+        android:text="Camera" />
+
+    <Button
+        android:id="@+id/button_from_files"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="211dp"
+        android:layout_marginTop="206dp"
+        android:layout_marginEnd="70dp"
+        android:drawableTop="@drawable/ic_baseline_file_upload_24"
+        android:text="Upload From Files"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Camera Fragment"
-        android:textSize="30sp" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="180dp"
+        android:text="TextView" />
 
 </RelativeLayout>
