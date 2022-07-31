@@ -10,13 +10,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.io.File;
+import java.io.StringWriter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
+import java.io.*;
+import org.json.*;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
+import com.github.underscore.U;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class CreateNewInvoice extends AppCompatActivity {
     private static final String TAG = "CreateNewInvoice";
@@ -146,9 +166,13 @@ public class CreateNewInvoice extends AppCompatActivity {
                     String formattedAmount = formatNumberCurrency(editAmount.getText().toString().substring(2));
 
 
-                    addNewInvoice(editName.getText().toString(), editItem.getText().toString(),
-                            editItemQuant.getText().toString(), editItemEa.getText().toString(),
-                            "$ " + formattedAmount, editDueDate.getText().toString());
+                    try {
+                        addNewInvoice(editName.getText().toString(), editItem.getText().toString(),
+                                editItemQuant.getText().toString(), editItemEa.getText().toString(),
+                                "$ " + formattedAmount, editDueDate.getText().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             }
@@ -160,7 +184,7 @@ public class CreateNewInvoice extends AppCompatActivity {
     }
 
 
-    private void addNewInvoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate) {
+    private void addNewInvoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate) throws JSONException {
         DatabaseHelper databaseHelper = DatabaseHelper.getDB(this.getApplicationContext());
 
         Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, "Unpaid");
@@ -170,8 +194,11 @@ public class CreateNewInvoice extends AppCompatActivity {
         );
 
         //Method which uses JAXB to convert object to XML
-
-
+        try {
+            javaObjectToJson(invoice);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         ArrayList<Invoice> arrInvoices = (ArrayList<Invoice>) databaseHelper.invoiceDao()
                 .getAllInvoice();
@@ -183,4 +210,57 @@ public class CreateNewInvoice extends AppCompatActivity {
 
         finish();
     }
+
+    private void javaObjectToJson(Invoice invoice) throws JSONException, IOException {
+        Gson gson = new Gson();
+
+        //transform a java object to json
+        String jsonString = gson.toJson(invoice).toString();
+        JSONObject json = new JSONObject(jsonString);
+
+        System.out.println("json = " + json.toString());
+
+        Log.d(TAG, "converted to JSON");
+
+        String xmlString = U.jsonToXml(jsonString);
+        System.out.println(xmlString);
+        Log.d(TAG, "converted to XML");
+
+        Document doc = convertStringToXMLDocument(xmlString);
+        writeToFile("invoice.xml", xmlString);
+
+        System.out.println(doc.getFirstChild().getNodeName());
+
+    }
+
+    private static Document convertStringToXMLDocument(String xmlString) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = null;
+        try
+        {
+            //Create DocumentBuilder with default configuration
+            builder = factory.newDocumentBuilder();
+
+            //Parse the content to Document object
+            Document doc = builder.parse(new InputSource(new StringReader(xmlString)));
+            return doc;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    private void writeToFile(String fileName, String xmlString) throws IOException {
+        File path = getApplicationContext().getFilesDir();
+        try {
+            FileOutputStream writer = new FileOutputStream(new File(path, fileName));
+            writer.write(xmlString.getBytes(StandardCharsets.UTF_8));
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
