@@ -96,10 +96,10 @@
                     android:layout_alignStart="@+id/txt_itemQuantLabel"
                     android:layout_marginStart="-4dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:ems="12"
                     android:hint="Enter Quantity"
-                    android:layout_marginBottom="5dp"
-                    android:inputType="text" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/txt_itemQuantLabel"
@@ -127,10 +127,10 @@
                     android:layout_alignStart="@+id/txt_itemEaLabel"
                     android:layout_marginStart="-4dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:ems="12"
                     android:hint="Enter Price (ea)"
-                    android:layout_marginBottom="5dp"
-                    android:inputType="text" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/txt_itemEaLabel"
@@ -158,9 +158,11 @@
                     android:layout_alignStart="@+id/txt_amountLabel"
                     android:layout_marginStart="-4dp"
                     android:layout_marginTop="5dp"
-                    android:ems="12"
-                    android:hint="Total Amount"
                     android:layout_marginBottom="5dp"
+                    android:ems="12"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Total Amount"
                     android:inputType="text" />
 
                 <TextView
@@ -192,7 +194,7 @@
                     android:layout_marginBottom="5dp"
                     android:ems="12"
                     android:hint="Enter Due Date"
-                    android:inputType="date" />
+                    android:inputType="number|date" />
 
                 <TextView
                     android:id="@+id/txt_dueDateLabel"
