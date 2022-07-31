@@ -1,5 +1,6 @@
 package com.example.manillable;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +9,62 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class ClientFragment extends Fragment {
+    FloatingActionButton fab;
+    RecyclerView mClientList;
+    private ClientAdapter clientAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_clientstab, container, false);
+        View view = inflater.inflate(R.layout.fragment_clientstab, container, false);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(getActivity().getApplicationContext(), CreateNewInvoice.class), 100);
+            }
+        });
+
+        initRecyclerView(view);
+        loadClientList();
+
+        return view;
+    }
+    private void initRecyclerView(View view) {
+        mClientList = view.findViewById(R.id.rv_InvoiceList);
+        mClientList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL);
+        mClientList.addItemDecoration(dividerItemDecoration);
+
+        clientAdapter = new ClientAdapter(getActivity().getApplicationContext());
+
+        mClientList.setAdapter(clientAdapter);
+
+    }
+
+    private void loadClientList() {
+        ClientDatabaseHelper clientDatabaseHelper = ClientDatabaseHelper.getDB(getActivity().getApplicationContext());
+
+        List<Client> clientList = clientDatabaseHelper.clientDao().getAllClient();
+
+        clientAdapter.setmClientList(clientList);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 100) {
+            loadClientList();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

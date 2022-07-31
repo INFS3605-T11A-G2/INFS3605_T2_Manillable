@@ -53,9 +53,9 @@ public class InvoicesFragment extends Fragment {
     }
 
     private void loadInvoiceList() {
-        DatabaseHelper databaseHelper = DatabaseHelper.getDB(getActivity().getApplicationContext());
+        InvoiceDatabaseHelper invoiceDatabaseHelper = InvoiceDatabaseHelper.getDB(getActivity().getApplicationContext());
 
-        List<Invoice> invoiceList = databaseHelper.invoiceDao().getAllInvoice();
+        List<Invoice> invoiceList = invoiceDatabaseHelper.invoiceDao().getAllInvoice();
 
         invoiceAdapter.setmInvoiceList(invoiceList);
     }

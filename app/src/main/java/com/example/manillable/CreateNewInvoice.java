@@ -7,20 +7,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import java.io.File;
-import java.io.StringWriter;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.XML;
-import java.io.*;
-import org.json.*;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
@@ -29,7 +23,6 @@ import com.github.underscore.U;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -185,11 +178,11 @@ public class CreateNewInvoice extends AppCompatActivity {
 
 
     private void addNewInvoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate) throws JSONException {
-        DatabaseHelper databaseHelper = DatabaseHelper.getDB(this.getApplicationContext());
+        InvoiceDatabaseHelper invoiceDatabaseHelper = InvoiceDatabaseHelper.getDB(this.getApplicationContext());
 
         Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, "Unpaid");
 
-        databaseHelper.invoiceDao().addInvoice(
+        invoiceDatabaseHelper.invoiceDao().addInvoice(
                 invoice
         );
 
@@ -200,7 +193,7 @@ public class CreateNewInvoice extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ArrayList<Invoice> arrInvoices = (ArrayList<Invoice>) databaseHelper.invoiceDao()
+        ArrayList<Invoice> arrInvoices = (ArrayList<Invoice>) invoiceDatabaseHelper.invoiceDao()
                 .getAllInvoice();
 
         for(int i = 0; i<arrInvoices.size(); i++) {
