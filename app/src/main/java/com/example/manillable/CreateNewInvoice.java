@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -141,20 +143,35 @@ public class CreateNewInvoice extends AppCompatActivity {
                         || stringEditItemEa.isEmpty() || stringEditAmount.isEmpty() || stringEditDueDate.isEmpty()) {
                     Toast.makeText(CreateNewInvoice.this, "Please ensure to fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
+                    String formattedAmount = formatNumberCurrency(editAmount.getText().toString().substring(2));
+
+
                     addNewInvoice(editName.getText().toString(), editItem.getText().toString(),
                             editItemQuant.getText().toString(), editItemEa.getText().toString(),
-                            editAmount.getText().toString(), editDueDate.getText().toString());
+                            "$ " + formattedAmount, editDueDate.getText().toString());
+
                 }
             }
         });
     }
+    private static String formatNumberCurrency(String number) {
+        DecimalFormat formatter = new DecimalFormat("###,###,##0.00");
+        return formatter.format(Double.parseDouble(number));
+    }
+
 
     private void addNewInvoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate) {
         DatabaseHelper databaseHelper = DatabaseHelper.getDB(this.getApplicationContext());
 
+        Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, "Unpaid");
+
         databaseHelper.invoiceDao().addInvoice(
-                new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, "Unpaid")
+                invoice
         );
+
+        //Method which uses JAXB to convert object to XML
+
+
 
         ArrayList<Invoice> arrInvoices = (ArrayList<Invoice>) databaseHelper.invoiceDao()
                 .getAllInvoice();
