@@ -7,6 +7,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity(tableName = "invoice_table")
 public class Invoice {
 
@@ -28,16 +30,20 @@ public class Invoice {
     @ColumnInfo(name = "amount")
     private String amount;
 
+    @ColumnInfo(name = "due_date")
+    private String dueDate;
+
     @ColumnInfo(name = "paid")
     private String paid;
 
-    public Invoice(int id, String clientName, String item, String itemQuant, String itemEa, String amount, String paid) {
+    public Invoice(int id, String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate, String paid) {
         this.id = id;
         this.clientName = clientName;
         this.item = item;
         this.itemQuant = itemQuant;
         this.itemEa = itemEa;
         this.amount = amount;
+        this.dueDate = dueDate;
         this.paid = paid;
     }
 
@@ -47,12 +53,13 @@ public class Invoice {
      * @param amount
      */
     @Ignore
-    Invoice(String clientName, String item, String itemQuant, String itemEa, String amount, String paid) {
+    Invoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate, String paid) {
         this.clientName = clientName;
         this.item = item;
         this.itemQuant = itemQuant;
         this.itemEa = itemEa;
         this.amount = amount;
+        this.dueDate = dueDate;
         this.paid = paid;
     }
 
@@ -102,6 +109,14 @@ public class Invoice {
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public String getPaid() {

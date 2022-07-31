@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class CreateNewInvoice extends AppCompatActivity {
     private static final String TAG = "CreateNewInvoice";
     EditText editName, editAmount;
-    Button submitButton;
+    FloatingActionButton submitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class CreateNewInvoice extends AppCompatActivity {
         DatabaseHelper databaseHelper = DatabaseHelper.getDB(this.getApplicationContext());
 
         databaseHelper.invoiceDao().addInvoice(
-                new Invoice(clientName, "item", "itemQuant","itemEa",amount,"paid")
+                new Invoice(clientName, "item", "itemQuant","itemEa",amount,"Due Date", "Unpaid")
         );
 
         ArrayList<Invoice> arrInvoices = (ArrayList<Invoice>) databaseHelper.invoiceDao()
