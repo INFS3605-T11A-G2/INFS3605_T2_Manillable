@@ -35,8 +35,10 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull InvoiceAdapter.MyViewHolder holder, int position) {
-        holder.clientName.setText(this.mInvoiceList.get(position).getClientName());
-        holder.amount.setText(this.mInvoiceList.get(position).getAmount());
+        Invoice invoice = mInvoiceList.get(position);
+        holder.clientName.setText(invoice.getClientName());
+        holder.amount.setText(invoice.getAmount());
+        holder.itemView.setTag(invoice.getId());
     }
 
     @Override

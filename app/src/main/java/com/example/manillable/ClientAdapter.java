@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ClientAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHolder> {
+public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHolder> {
     private Context context;
     private List<Client> mClientList;
 
@@ -34,9 +34,9 @@ public class ClientAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull InvoiceAdapter.MyViewHolder holder, int position) {
-        holder.name.setText(this.mInvoiceList.get(position).getClientName());
-        holder.amount.setText(this.mInvoiceList.get(position).getAmount());
+    public void onBindViewHolder(@NonNull ClientAdapter.MyViewHolder holder, int position) {
+//        holder.name.setText(this.mInvoiceList.get(position).getClientName());
+//        holder.amount.setText(this.mInvoiceList.get(position).getAmount());
     }
 
     @Override
