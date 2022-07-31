@@ -1,9 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InvoiceDetail">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txt_clientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_invoice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:text="Client Name"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/txt_invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout_pdfPreview"
+        android:layout_marginBottom="-94dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:fontFamily="@font/inter_regular"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:text="Invoice" />
+
+    <TextView
+        android:id="@+id/txt_Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/relativeLayout_pdfPreview"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="-55dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Done"
+        android:textColor="@color/app_blue"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/txt_Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/relativeLayout_pdfPreview"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="-55dp"
+        android:fontFamily="@font/inter_semibold"
+        android:textSize="15dp"
+        android:text="Edit"
+        android:textColor="@color/app_blue" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_pdfPreview"
+        android:layout_width="match_parent"
+        android:layout_height="333dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="127dp"
+        android:background="@color/grey">
+
+        <Button
+            android:id="@+id/btn_previewPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/appblack_round_15"
+            android:text="Preview pdf invoice" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout_pdfPreview"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/inter_regular"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        android:text="Total" />
+
+    <TextView
+        android:id="@+id/txt_amount_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_total"
+        android:layout_alignStart="@id/txt_total"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="$ 1,300"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/iv_paperclip"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@id/txt_amount_detail"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@id/txt_amount_detail"
+        android:src="@drawable/paperclip" />
+
+    <TextView
+        android:id="@+id/txt_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_paperclip"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="-9dp"
+        android:layout_toEndOf="@id/iv_paperclip"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Paid"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/btn_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_amount_detail"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/appblue_round_15"
+        android:text="resend"
+        />
+
+    <Button
+        android:id="@+id/btn_markPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_resend"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/appgrey_round_15"
+        android:text="mark as paid"
+        android:textColor="@color/black"
+        />
+
+
+</RelativeLayout>

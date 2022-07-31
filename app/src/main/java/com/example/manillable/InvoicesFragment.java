@@ -2,6 +2,7 @@ package com.example.manillable;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 public class InvoicesFragment extends Fragment {
-    FloatingActionButton fab;
-    RecyclerView mInvoiceList;
+    private static final String TAG = "InvoicesFragment";
+    private FloatingActionButton fab;
+    private RecyclerView mInvoiceList;
     private InvoiceAdapter invoiceAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Nullable
     @Override
@@ -46,11 +49,32 @@ public class InvoicesFragment extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL);
         mInvoiceList.addItemDecoration(dividerItemDecoration);
 
-        invoiceAdapter = new InvoiceAdapter(getActivity().getApplicationContext());
+        //Set an onclick listener for the recycler view
+        InvoiceAdapter.RecyclerViewClickListener listener = new InvoiceAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, String invoiceSymbol) {
+                Log.d(TAG, invoiceSymbol);
+                launchDetailActivity(invoiceSymbol);
+            }
+        };
+
+        invoiceAdapter = new InvoiceAdapter(getActivity().getApplicationContext(), listener);
 
         mInvoiceList.setAdapter(invoiceAdapter);
 
     }
+
+    /**
+     * Responsible for launching the detail activity once a record is tapped in the recycler view
+     * @param symbol - Retrieve the symbol string from the record's Tag() within the recycler iew
+     */
+    protected void launchDetailActivity (String symbol) {
+        Log.d(TAG, "Detail Activity Launched");
+        Intent intent = new Intent(getActivity().getApplicationContext(), InvoiceDetail.class);
+        intent.putExtra(InvoiceDetail.INTENT_MESSAGE, symbol);
+        startActivity(intent);
+    }
+
 
     private void loadInvoiceList() {
         InvoiceDatabaseHelper invoiceDatabaseHelper = InvoiceDatabaseHelper.getDB(getActivity().getApplicationContext());

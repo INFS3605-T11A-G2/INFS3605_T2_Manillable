@@ -17,6 +17,10 @@ public interface InvoiceDao {
     @Insert
     void addInvoice(Invoice...invoice);
 
+    // Query and return ONE invoice's results based on the received symbol
+    @Query("SELECT * FROM invoice_table WHERE id == :invoiceSymbol")
+    Invoice getInvoice(String invoiceSymbol);
+
     @Update
     void updateInvoice(Invoice invoice);
 

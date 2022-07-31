@@ -19,6 +19,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
 import com.github.underscore.U;
+import java.util.Random;
 
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -180,7 +181,16 @@ public class CreateNewInvoice extends AppCompatActivity {
     private void addNewInvoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate) throws JSONException {
         InvoiceDatabaseHelper invoiceDatabaseHelper = InvoiceDatabaseHelper.getDB(this.getApplicationContext());
 
-        Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, "Unpaid");
+        String paid;
+        Random randomNum = new Random();
+        int result = randomNum.nextInt(2);
+        if(result == 0){
+            paid = "Paid";
+        } else {
+            paid = "Unpaid";
+        }
+
+        Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, paid);
 
         invoiceDatabaseHelper.invoiceDao().addInvoice(
                 invoice
