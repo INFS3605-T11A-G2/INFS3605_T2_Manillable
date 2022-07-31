@@ -10,20 +10,35 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "invoice_table")
 public class Invoice {
 
-
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "client_name")
     private String clientName;
 
+    @ColumnInfo(name = "item_desc")
+    private String item;
+
+    @ColumnInfo(name = "item_quant")
+    private String itemQuant;
+
+    @ColumnInfo(name = "item_ea")
+    private String itemEa;
+
     @ColumnInfo(name = "amount")
     private String amount;
 
-    Invoice(int id, String clientName, String amount) {
+    @ColumnInfo(name = "paid")
+    private String paid;
+
+    public Invoice(int id, String clientName, String item, String itemQuant, String itemEa, String amount, String paid) {
         this.id = id;
         this.clientName = clientName;
+        this.item = item;
+        this.itemQuant = itemQuant;
+        this.itemEa = itemEa;
         this.amount = amount;
+        this.paid = paid;
     }
 
     /**
@@ -32,9 +47,13 @@ public class Invoice {
      * @param amount
      */
     @Ignore
-    Invoice(String clientName, String amount) {
+    Invoice(String clientName, String item, String itemQuant, String itemEa, String amount, String paid) {
         this.clientName = clientName;
+        this.item = item;
+        this.itemQuant = itemQuant;
+        this.itemEa = itemEa;
         this.amount = amount;
+        this.paid = paid;
     }
 
     public int getId() {
@@ -53,11 +72,43 @@ public class Invoice {
         this.clientName = clientName;
     }
 
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public String getItemQuant() {
+        return itemQuant;
+    }
+
+    public void setItemQuant(String itemQuant) {
+        this.itemQuant = itemQuant;
+    }
+
+    public String getItemEa() {
+        return itemEa;
+    }
+
+    public void setItemEa(String itemEa) {
+        this.itemEa = itemEa;
+    }
+
     public String getAmount() {
         return amount;
     }
 
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getPaid() {
+        return paid;
+    }
+
+    public void setPaid(String paid) {
+        this.paid = paid;
     }
 }

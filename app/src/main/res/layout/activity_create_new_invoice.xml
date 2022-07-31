@@ -2,43 +2,138 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateNewInvoice">
 
-    <EditText
-        android:id="@+id/client_name"
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="697dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:background="@color/grey">
+
+        <RelativeLayout
+            android:id="@+id/rel_layout_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/client_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_billToLabel"
+                    android:layout_alignStart="@+id/txt_billToLabel"
+                    android:layout_marginStart="-4dp"
+                    android:layout_marginTop="5dp"
+                    android:ems="12"
+                    android:hint="Enter Name"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/txt_billToLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Bill To" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="298dp"
-        android:ems="12"
-        android:hint="Enter Name"
-        android:inputType="text" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        style="@style/FloatingActionButtonStyle"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/fab_next"
+        android:layout_alignBottom="@+id/fab_next"
+        android:layout_alignStart="@+id/fab_next"
+        android:layout_alignEnd="@+id/fab_next"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:elevation="7dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:text="Next"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amount"
+        android:layout_alignStart="@+id/amount"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="208dp"
+        android:text="Button" />
 
     <EditText
         android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="80dp"
         android:layout_marginTop="372dp"
         android:ems="12"
         android:hint="Enter Amount"
         android:inputType="number" />
 
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/iv_closeIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        app:srcCompat="@drawable/closeicon" />
+
+    <TextView
+        android:id="@+id/txt_dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="208dp"
-        android:text="Button" />
+        android:layout_below="@+id/iv_closeIcon"
+        android:layout_alignStart="@+id/iv_closeIcon"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter_light"
+        android:text="Date"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txt_createInvoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_dateLabel"
+        android:layout_alignStart="@+id/txt_dateLabel"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Create Invoice"
+        android:textColor="@color/black"
+        android:textSize="22dp" />
 
 </RelativeLayout>

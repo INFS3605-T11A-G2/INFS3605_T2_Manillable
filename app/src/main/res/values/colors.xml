@@ -10,4 +10,5 @@
     <color name="app_blue">#0077FF</color>
     <color name="notif_blue">#2e9aff</color>
     <color name="app_red">#E34234</color>
+    <color name="grey">#E6E6E6</color>
 </resources>

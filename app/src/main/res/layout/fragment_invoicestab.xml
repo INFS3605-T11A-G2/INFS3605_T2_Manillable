@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="609dp"
+        android:layout_below="@+id/txt_invoices"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="44dp"
+        android:layout_marginBottom="45dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_InvoiceList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:foregroundGravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="18dp"
         android:contentDescription="@string/add"
         android:src="@drawable/plus"
         app:backgroundTint="@color/app_blue"
@@ -20,26 +43,58 @@
         app:tint="@null" />
 
     <TextView
-        android:id="@+id/txt_invFragment"
+        android:id="@+id/txt_invoices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Invoices Fragment"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Invoices"
+        android:textColor="@color/black"
         android:textSize="30sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_InvoiceList"
+    <ImageView
+        android:id="@+id/iv_FilterIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignStart="@+id/txt_invoices"
+        android:layout_alignTop="@+id/constraintLayout"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-32dp"
+        app:srcCompat="@drawable/filtericon" />
+
+    <TextView
+        android:id="@+id/txt_FilterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/txt_invFragment"
-        android:layout_alignEnd="@+id/txt_invFragment"
-        android:layout_marginTop="127dp"
-        android:layout_marginEnd="194dp"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_alignTop="@+id/iv_FilterIcon"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_toEndOf="@+id/iv_FilterIcon"
+        android:fontFamily="@font/inter_regular"
+        android:text="Sorted by"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/iv_ArrowDownIcon"
+        android:layout_width="12dp"
+        android:layout_height="16dp"
+        android:layout_alignTop="@+id/iv_FilterIcon"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/txt_invoices"
+        app:srcCompat="@drawable/arrowdownicon" />
+
+    <ImageView
+        android:id="@+id/iv_SearchIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_above="@+id/iv_ArrowDownIcon"
+        android:layout_alignStart="@+id/iv_ArrowDownIcon"
+        android:layout_marginStart="-3dp"
+        android:layout_marginBottom="98dp"
+        app:srcCompat="@drawable/search" />
 
 </RelativeLayout>

@@ -36,7 +36,7 @@ public class CreateNewInvoice extends AppCompatActivity {
         DatabaseHelper databaseHelper = DatabaseHelper.getDB(this.getApplicationContext());
 
         databaseHelper.invoiceDao().addInvoice(
-                new Invoice(clientName, amount)
+                new Invoice(clientName, "item", "itemQuant","itemEa",amount,"paid")
         );
 
         ArrayList<Invoice> arrInvoices = (ArrayList<Invoice>) databaseHelper.invoiceDao()
