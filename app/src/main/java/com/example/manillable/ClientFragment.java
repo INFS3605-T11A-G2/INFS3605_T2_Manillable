@@ -21,12 +21,14 @@ public class ClientFragment extends Fragment {
     FloatingActionButton fab;
     RecyclerView mClientList;
     private ClientAdapter clientAdapter;
+    boolean isDone = false;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_clientstab, container, false);
-        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab_clients);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +42,7 @@ public class ClientFragment extends Fragment {
         return view;
     }
     private void initRecyclerView(View view) {
-        mClientList = view.findViewById(R.id.rv_InvoiceList);
+        mClientList = view.findViewById(R.id.rv_InvoiceListPaid_home);
         mClientList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL);
@@ -54,7 +56,12 @@ public class ClientFragment extends Fragment {
 
     private void loadClientList() {
         ClientDatabaseHelper clientDatabaseHelper = ClientDatabaseHelper.getDB(getActivity().getApplicationContext());
-
+        if(!isDone == true) {
+            clientDatabaseHelper.clientDao().addClient(new Client("Patrick Diakos", "p.diakos@gmail.com", "0417498573"));
+            clientDatabaseHelper.clientDao().addClient(new Client("Bradley Driscoll", "b.driscoll@gmail.com", "0495876615"));
+            clientDatabaseHelper.clientDao().addClient(new Client("Nevin Liu", "n.liu@gmail.com", "0495876615"));
+            isDone = true;
+        }
         List<Client> clientList = clientDatabaseHelper.clientDao().getAllClient();
 
         clientAdapter.setmClientList(clientList);

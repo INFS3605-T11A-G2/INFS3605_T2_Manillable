@@ -59,7 +59,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             super(view);
             mListener = listener;
             view.setOnClickListener(this);
-            clientName = view.findViewById(R.id.txt_Name);
+            clientName = view.findViewById(R.id.txt_Name_clientRow);
             amount = view.findViewById(R.id.txt_Amount);
             paid = view.findViewById(R.id.txt_paid);
 

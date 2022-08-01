@@ -9,13 +9,13 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="609dp"
-        android:layout_below="@+id/txt_invoices"
+        android:layout_below="@+id/txt_Home"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="44dp"
         android:layout_marginBottom="45dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_InvoiceList"
+            android:id="@+id/rv_InvoiceListPaid_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="4dp"
@@ -26,7 +26,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_clients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -43,7 +43,7 @@
         app:tint="@null" />
 
     <TextView
-        android:id="@+id/txt_invoices"
+        android:id="@+id/txt_Home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -56,43 +56,43 @@
         android:textSize="30sp" />
 
     <ImageView
-        android:id="@+id/iv_FilterIcon"
+        android:id="@+id/iv_FilterIcon_home"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignStart="@+id/txt_invoices"
+        android:layout_alignStart="@+id/txt_Home"
         android:layout_alignTop="@+id/constraintLayout"
         android:layout_marginStart="0dp"
         android:layout_marginTop="-32dp"
         app:srcCompat="@drawable/filtericon" />
 
     <TextView
-        android:id="@+id/txt_FilterName"
+        android:id="@+id/txt_FilterName_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_FilterIcon"
+        android:layout_alignTop="@+id/iv_FilterIcon_home"
         android:layout_marginStart="10dp"
         android:layout_marginTop="1dp"
-        android:layout_toEndOf="@+id/iv_FilterIcon"
+        android:layout_toEndOf="@+id/iv_FilterIcon_home"
         android:fontFamily="@font/inter_regular"
         android:text="Sorted by"
         android:textColor="@color/black" />
 
     <ImageView
-        android:id="@+id/iv_ArrowDownIcon"
+        android:id="@+id/iv_ArrowDownIcon_home"
         android:layout_width="12dp"
         android:layout_height="16dp"
-        android:layout_alignTop="@+id/iv_FilterIcon"
+        android:layout_alignTop="@+id/iv_FilterIcon_home"
         android:layout_marginStart="230dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/txt_invoices"
+        android:layout_toEndOf="@+id/txt_Home"
         app:srcCompat="@drawable/arrowdownicon" />
 
     <ImageView
-        android:id="@+id/iv_SearchIcon"
+        android:id="@+id/iv_SearchIcon_home"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_above="@+id/iv_ArrowDownIcon"
-        android:layout_alignStart="@+id/iv_ArrowDownIcon"
+        android:layout_above="@+id/iv_ArrowDownIcon_home"
+        android:layout_alignStart="@+id/iv_ArrowDownIcon_home"
         android:layout_marginStart="-3dp"
         android:layout_marginBottom="98dp"
         app:srcCompat="@drawable/search" />

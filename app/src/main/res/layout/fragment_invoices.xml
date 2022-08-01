@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_InvoiceList"
+        android:id="@+id/rv_InvoiceListPaid_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:foregroundGravity="center"

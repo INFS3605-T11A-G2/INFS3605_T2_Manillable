@@ -28,15 +28,16 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
     @NonNull
     @Override
     public ClientAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.invoice_card_row, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.client_card_row, parent, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ClientAdapter.MyViewHolder holder, int position) {
-//        holder.name.setText(this.mInvoiceList.get(position).getClientName());
-//        holder.amount.setText(this.mInvoiceList.get(position).getAmount());
+        holder.clientName.setText(this.mClientList.get(position).getName());
+        holder.phone.setText(this.mClientList.get(position).getPhone());
+        holder.email.setText(this.mClientList.get(position).getEmail());
     }
 
     @Override
@@ -45,12 +46,13 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView clientName, amount;
+        private TextView clientName, phone, email;
 
         public MyViewHolder(@NonNull View view) {
             super(view);
-            clientName = view.findViewById(R.id.txt_Name);
-            amount = view.findViewById(R.id.txt_Amount);
+            clientName = view.findViewById(R.id.txt_Name_clientRow);
+            phone = view.findViewById(R.id.txt_phone_clientRow);
+            email = view.findViewById(R.id.txt_email_clientRow);
         }
     }
 }

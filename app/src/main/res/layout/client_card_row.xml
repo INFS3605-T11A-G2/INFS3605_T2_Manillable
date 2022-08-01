@@ -22,7 +22,7 @@
         android:paddingBottom="16dp">
 
         <TextView
-            android:id="@+id/txt_Name"
+            android:id="@+id/txt_Name_clientRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_phone"
+            android:id="@+id/txt_phone_clientRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_medium"
@@ -45,10 +45,10 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txt_Name" />
+            app:layout_constraintTop_toTopOf="@+id/txt_Name_clientRow" />
 
         <TextView
-            android:id="@+id/txt_email"
+            android:id="@+id/txt_email_clientRow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_medium"
@@ -57,8 +57,8 @@
             android:textColor="@color/black"
             android:textSize="15dp"
             android:layout_marginStart="2dp"
-            app:layout_constraintStart_toStartOf="@id/txt_Name"
-            app:layout_constraintTop_toBottomOf="@id/txt_Name" />
+            app:layout_constraintStart_toStartOf="@id/txt_Name_clientRow"
+            app:layout_constraintTop_toBottomOf="@id/txt_Name_clientRow" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
