@@ -2,6 +2,7 @@ package com.example.manillable;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 public class ClientFragment extends Fragment {
+    private static final String TAG = "ClientFragment";
     FloatingActionButton fab;
     RecyclerView mClientList;
     private ClientAdapter clientAdapter;
-    boolean isDone = false;
+    private boolean isDone = false;
 
 
     @Nullable
@@ -42,7 +44,7 @@ public class ClientFragment extends Fragment {
         return view;
     }
     private void initRecyclerView(View view) {
-        mClientList = view.findViewById(R.id.rv_InvoiceListPaid_home);
+        mClientList = view.findViewById(R.id.rv_clientList);
         mClientList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL);
@@ -56,15 +58,21 @@ public class ClientFragment extends Fragment {
 
     private void loadClientList() {
         ClientDatabaseHelper clientDatabaseHelper = ClientDatabaseHelper.getDB(getActivity().getApplicationContext());
-        if(!isDone == true) {
+        insertClients();
+        List<Client> clientList = clientDatabaseHelper.clientDao().getAllClient();
+
+        clientAdapter.setmClientList(clientList);
+    }
+
+    private void insertClients() {
+        ClientDatabaseHelper clientDatabaseHelper = ClientDatabaseHelper.getDB(getActivity().getApplicationContext());
+        if(!isDone) {
             clientDatabaseHelper.clientDao().addClient(new Client("Patrick Diakos", "p.diakos@gmail.com", "0417498573"));
             clientDatabaseHelper.clientDao().addClient(new Client("Bradley Driscoll", "b.driscoll@gmail.com", "0495876615"));
             clientDatabaseHelper.clientDao().addClient(new Client("Nevin Liu", "n.liu@gmail.com", "0495876615"));
             isDone = true;
         }
-        List<Client> clientList = clientDatabaseHelper.clientDao().getAllClient();
-
-        clientAdapter.setmClientList(clientList);
+        Log.d(TAG, String.valueOf(isDone));
     }
 
     @Override

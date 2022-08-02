@@ -21,6 +21,14 @@ public interface InvoiceDao {
     @Query("SELECT * FROM invoice_table WHERE id == :invoiceSymbol")
     Invoice getInvoice(String invoiceSymbol);
 
+    // Query and return ONE invoice's results based on the received symbol
+    @Query("SELECT * FROM invoice_table WHERE paid == :Unpaid")
+    List<Invoice> getUnpaid(String Unpaid);
+
+    // Query and return ONE invoice's results based on the received symbol
+    @Query("SELECT * FROM invoice_table WHERE paid == :Paid")
+    List<Invoice> getPaid(String Paid);
+
     @Update
     void updateInvoice(Invoice invoice);
 

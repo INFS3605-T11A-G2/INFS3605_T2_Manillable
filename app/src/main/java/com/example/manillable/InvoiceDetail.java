@@ -94,23 +94,50 @@ public class InvoiceDetail extends AppCompatActivity {
                 }
             });
 
+            mMarkPaid.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    invoice.setPaid("Paid");
+                    invoiceDatabaseHelper.invoiceDao().updateInvoice(invoice);
+                }
+            });
+
             mResend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final Intent intent = new Intent(Intent.ACTION_VIEW)
-                            .setType("plain/text")
-                            .setData(Uri.parse("test@gmail.com"))
-                            .setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail")
-                            .putExtra(Intent.EXTRA_EMAIL, new String[]{"test@gmail.com"})
-                            .putExtra(Intent.EXTRA_SUBJECT, invoice.getClientName() + " Invoice Overdue")
-                            .putExtra(Intent.EXTRA_TEXT, "Hi " + invoice.getClientName() + ", \n"
-                                + "Please see the attached documents in regards to the work I completed.");
-                    startActivity(intent);
+                    String addresses = invoice.getClientName() + "@gmail.com";
+                    String subject = invoice.getClientName() + " Invoice Overdue";
+                    Uri myURI = Uri.parse("android.resource://com.example.manillable/" + R.drawable.generatedinvoice);
+                    composeEmail(addresses, subject, invoice, myURI);
+                }
+            });
 
+            mImagePdf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.setAction(android.content.Intent.ACTION_VIEW);
+                    intent.setType("image/*");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
             });
         }
     }
+
+    public void composeEmail(String addresses, String subject, Invoice invoice, Uri myURI) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, "Hi " + invoice.getClientName() + ", \n"
+                + "Please see the attached documents in regards to the work I completed.");
+        intent.putExtra(Intent.EXTRA_STREAM, myURI);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 
     private void createPdf(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate, String paid) throws FileNotFoundException {
         String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();

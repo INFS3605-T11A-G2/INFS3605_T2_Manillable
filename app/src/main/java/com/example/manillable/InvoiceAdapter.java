@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHolder> {
@@ -17,7 +19,6 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
     private Context context;
     private List<Invoice> mInvoiceList;
     private RecyclerViewClickListener mListener;
-
     public InvoiceAdapter(Context context, RecyclerViewClickListener mListener) {
         this.context = context;
         this.mListener = mListener;
@@ -59,7 +60,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             super(view);
             mListener = listener;
             view.setOnClickListener(this);
-            clientName = view.findViewById(R.id.txt_Name_clientRow);
+            clientName = view.findViewById(R.id.txt_Name_invoiceRow);
             amount = view.findViewById(R.id.txt_Amount);
             paid = view.findViewById(R.id.txt_paid);
 
@@ -70,7 +71,6 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.MyViewHo
             Log.d(TAG, (String) view.getTag());
         }
     }
-
 
 
     //ClickListener interface

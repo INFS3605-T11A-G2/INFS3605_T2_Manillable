@@ -6,23 +6,24 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayout_overdue"
         android:layout_width="match_parent"
-        android:layout_height="609dp"
+        android:layout_height="228dp"
         android:layout_below="@+id/txt_Home"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="44dp"
-        android:layout_marginBottom="45dp">
+        android:layout_marginBottom="328dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_InvoiceListPaid_home"
+            android:id="@+id/rv_InvoiceListOverdue_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="4dp"
             android:foregroundGravity="center"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -42,56 +43,58 @@
         android:id="@+id/txt_overdueInvoices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="88dp"
-        android:fontFamily="@font/inter_regular"
-        android:text="Home"
-        android:textColor="@color/black"
-        android:textSize="30sp" />
-
-    <ImageView
-        android:id="@+id/iv_FilterIcon_home"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
         android:layout_alignStart="@+id/txt_Home"
-        android:layout_alignTop="@+id/constraintLayout"
+        android:layout_alignBottom="@+id/txt_Home"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="-32dp"
-        app:srcCompat="@drawable/filtericon" />
-
-    <TextView
-        android:id="@+id/txt_FilterName_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_FilterIcon_home"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="1dp"
-        android:layout_toEndOf="@+id/iv_FilterIcon_home"
+        android:layout_marginBottom="-35dp"
         android:fontFamily="@font/inter_regular"
-        android:text="Sorted by"
-        android:textColor="@color/black" />
-
-    <ImageView
-        android:id="@+id/iv_ArrowDownIcon_home"
-        android:layout_width="12dp"
-        android:layout_height="16dp"
-        android:layout_alignTop="@+id/iv_FilterIcon_home"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/txt_Home"
-        app:srcCompat="@drawable/arrowdownicon" />
+        android:text="Overdue Invoices"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
     <ImageView
         android:id="@+id/iv_SearchIcon_home"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_above="@+id/iv_ArrowDownIcon_home"
-        android:layout_alignStart="@+id/iv_ArrowDownIcon_home"
-        android:layout_marginStart="-6dp"
-        android:layout_marginBottom="91dp"
+        android:layout_above="@+id/txt_Home"
+        android:layout_marginStart="270dp"
+        android:layout_marginBottom="-50dp"
+        android:layout_toEndOf="@+id/txt_Home"
         app:srcCompat="@drawable/search" />
+
+    <TextView
+        android:id="@+id/txt_PaidInvoices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txt_Home"
+        android:layout_alignTop="@+id/constraintLayout_paid"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginBottom="-35dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Paid Invoices"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_paid"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_below="@+id/constraintLayout_overdue"
+        android:layout_marginTop="-250dp"
+        android:layout_marginBottom="328dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_InvoiceListPaid_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:foregroundGravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </RelativeLayout>

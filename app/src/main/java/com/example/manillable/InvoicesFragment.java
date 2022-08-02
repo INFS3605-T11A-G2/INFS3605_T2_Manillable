@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -29,7 +30,7 @@ public class InvoicesFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_invoicestab, container, false);
-        fab = (FloatingActionButton) view.findViewById(R.id.fab_clients);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +44,7 @@ public class InvoicesFragment extends Fragment {
         return view;
     }
     private void initRecyclerView(View view) {
-        mInvoiceList = view.findViewById(R.id.rv_InvoiceListPaid_home);
+        mInvoiceList = view.findViewById(R.id.rv_InvoiceList);
         mInvoiceList.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity().getApplicationContext(), DividerItemDecoration.VERTICAL);
