@@ -202,16 +202,7 @@ public class CreateNewInvoice extends AppCompatActivity {
     private void addNewInvoice(String clientName, String item, String itemQuant, String itemEa, String amount, String dueDate) throws JSONException {
         InvoiceDatabaseHelper invoiceDatabaseHelper = InvoiceDatabaseHelper.getDB(this.getApplicationContext());
 
-        String paid;
-        Random randomNum = new Random();
-        int result = randomNum.nextInt(2);
-        if(result == 0){
-            paid = "Paid";
-        } else {
-            paid = "Unpaid";
-        }
-
-        Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, paid);
+        Invoice invoice = new Invoice(clientName, item, itemQuant,itemEa,amount,dueDate, "Unpaid");
 
         invoiceDatabaseHelper.invoiceDao().addInvoice(
                 invoice

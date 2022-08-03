@@ -106,6 +106,7 @@ public class InvoiceDetail extends AppCompatActivity {
                 public void onClick(View view) {
                     invoice.setPaid("Paid");
                     invoiceDatabaseHelper.invoiceDao().updateInvoice(invoice);
+                    finish();
                 }
             });
 
@@ -114,7 +115,7 @@ public class InvoiceDetail extends AppCompatActivity {
                 public void onClick(View view) {
                     String addresses = invoice.getClientName() + "@gmail.com";
                     String subject = invoice.getClientName() + " Invoice Overdue";
-                    Uri myURI = Uri.parse("android.resource://com.example.manillable/" + R.drawable.generatedinvoice);
+                    Uri myURI = Uri.parse("android.resource://com.example.manillable/" + R.drawable.generatedinvoice2);
                     composeEmail(addresses, subject, invoice, myURI);
                 }
             });
