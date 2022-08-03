@@ -1,10 +1,18 @@
 package com.example.manillable;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +25,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.googlecode.tesseract.android.TessBaseAPI;
+import com.tom_roush.pdfbox.android.PDFBoxResourceLoader;
+import com.tom_roush.pdfbox.pdmodel.PDDocument;
+import com.tom_roush.pdfbox.text.PDFTextStripper;
+
 public class CameraFragment extends Fragment {
 
     private static final int CHOOSE_FILE = 2;
@@ -25,8 +38,6 @@ public class CameraFragment extends Fragment {
     Button fromFilesButton;
     TextView previewTextView;
     View inflatedView;
-
-    Uri pickedUri;
 
     private void openFile(Uri pickerInitialUri, String mimeType) {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -48,10 +59,41 @@ public class CameraFragment extends Fragment {
 
         if (requestCode == CHOOSE_FILE) {
             Uri uri = data.getData();
-            this.pickedUri = uri;
             this.previewTextView.setText(uri.toString());
+
+            ContentResolver contentResolver = this.getContext().getContentResolver();
+            InputStream inputStream;
+
+            try {
+                inputStream = contentResolver.openInputStream(uri);
+                PDDocument pdfDocument = PDDocument.load(inputStream);
+
+                PDFTextStripper pdfTextStripper = new PDFTextStripper();
+
+                String recognizedText = pdfTextStripper.getText(pdfDocument);
+                System.out.print(recognizedText);
+
+                pdfDocument.close();
+                inputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+
+
         } else if (requestCode == TAKE_IMAGE) {
             this.previewTextView.setText("Image received....processing....");
+
+            TessBaseAPI tess = new TessBaseAPI();
+            String dataPath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "tessdata").getAbsolutePath();
+
+            if (!tess.init(dataPath, "eng")) {
+                tess.recycle();
+                return;
+            }
+
+            //tess.setImage(bmpFile);
         }
     }
 
@@ -86,6 +128,8 @@ public class CameraFragment extends Fragment {
                 }
             }
         });
+
+        PDFBoxResourceLoader.init(getContext());
         return inflatedView;
     }
 }
