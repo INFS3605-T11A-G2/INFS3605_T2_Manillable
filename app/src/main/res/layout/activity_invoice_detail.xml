@@ -133,7 +133,7 @@
         android:fontFamily="@font/inter_semibold"
         android:text="Paid"
         android:textColor="@color/black"
-        android:textSize="25dp" />
+        android:textSize="23dp" />
 
     <Button
         android:id="@+id/btn_resend"
@@ -142,14 +142,13 @@
         android:layout_below="@+id/txt_amount_detail"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
         android:layout_marginRight="5dp"
         android:background="@drawable/appblue_round_15"
-        android:text="resend"
-        />
+        android:text="resend" />
 
     <Button
         android:id="@+id/btn_markPaid"
@@ -165,7 +164,7 @@
         android:layout_marginRight="5dp"
         android:backgroundTint="@color/grey"
         android:text="mark as paid"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"/>
 
 
 </RelativeLayout>
