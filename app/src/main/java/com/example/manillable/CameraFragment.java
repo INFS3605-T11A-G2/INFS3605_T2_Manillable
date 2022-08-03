@@ -30,10 +30,18 @@ import com.tom_roush.pdfbox.android.PDFBoxResourceLoader;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
 import com.tom_roush.pdfbox.text.PDFTextStripper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
+
 public class CameraFragment extends Fragment {
 
     private static final int CHOOSE_FILE = 2;
     private static final int TAKE_IMAGE = 1;
+    private static final String TAG = "CameraFragment";
 
     Button fromFilesButton;
     TextView previewTextView;
@@ -71,10 +79,41 @@ public class CameraFragment extends Fragment {
                 PDFTextStripper pdfTextStripper = new PDFTextStripper();
 
                 String recognizedText = pdfTextStripper.getText(pdfDocument);
-                System.out.print(recognizedText);
+                Log.d(TAG, recognizedText);
+
+                //Finding index of wanted variables
+                String[] stringParts = recognizedText.split("\\n");
+                //Name
+                String nameString = stringParts[4];
+                String name = nameString.substring(nameString.indexOf(":") + 2);
+                Log.d(TAG, name);
+                //Item
+                String itemString = stringParts[16];
+                String[] itemQuantityArray = itemString.split(" ");
+                String item = itemQuantityArray[0] + " " + itemQuantityArray[1];
+                Log.d(TAG, item);
+                //Quantity
+                String quantity = itemQuantityArray[2];
+                Log.d(TAG, quantity);
+                //Price
+                String priceFull = String.format(itemQuantityArray[3]);
+                String price = priceFull.substring(1, 4);
+                Log.d(TAG, price);
+                //DueDate
+                String dueDateString = stringParts[9];
+                Log.d(TAG, dueDateString);
 
                 pdfDocument.close();
                 inputStream.close();
+                Intent intent = new Intent(getActivity().getApplicationContext(), CreateNewInvoice.class);
+                intent.putExtra("Name", name);
+                intent.putExtra("Item", item);
+                intent.putExtra("Quantity", quantity);
+                intent.putExtra("Price", price);
+                intent.putExtra("DueDate", dueDateString);
+                startActivity(intent);
+
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException ioException) {

@@ -53,6 +53,20 @@ public class CreateNewInvoice extends AppCompatActivity {
         editDueDate = findViewById(R.id.dueDate);
         submitButton = findViewById(R.id.button);
         close = findViewById(R.id.iv_closeIcon);
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("Name")) {
+            String name = getIntent().getStringExtra("Name");
+            String item = getIntent().getStringExtra("Item");
+            String quantity = getIntent().getStringExtra("Quantity");
+            String price = getIntent().getStringExtra("Price");
+            String dueDate = getIntent().getStringExtra("DueDate");
+            editName.setText(name);
+            editItem.setText(item);
+            editItemQuant.setText(quantity);
+            editItemEa.setText(price);
+            editDueDate.setText(dueDate);
+        }
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
