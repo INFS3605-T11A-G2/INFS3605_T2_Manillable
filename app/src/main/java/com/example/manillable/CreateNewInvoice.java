@@ -2,12 +2,14 @@ package com.example.manillable;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import java.io.File;
 import java.io.*;
@@ -35,6 +37,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class CreateNewInvoice extends AppCompatActivity {
     private static final String TAG = "CreateNewInvoice";
     EditText editName, editItem, editItemQuant, editItemEa, editAmount, editDueDate;
+    ImageView close;
     FloatingActionButton submitButton;
 
     @Override
@@ -49,7 +52,14 @@ public class CreateNewInvoice extends AppCompatActivity {
         editAmount = findViewById(R.id.amount);
         editDueDate = findViewById(R.id.dueDate);
         submitButton = findViewById(R.id.button);
+        close = findViewById(R.id.iv_closeIcon);
 
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
         editItemEa.addTextChangedListener(new TextWatcher() {
@@ -137,8 +147,6 @@ public class CreateNewInvoice extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
-
-
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {

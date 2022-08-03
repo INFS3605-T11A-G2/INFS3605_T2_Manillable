@@ -85,6 +85,9 @@ public class InvoicesFragment extends Fragment {
         invoiceAdapter.setmInvoiceList(invoiceList);
     }
 
+
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 100) {

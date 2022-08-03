@@ -94,6 +94,13 @@ public class InvoiceDetail extends AppCompatActivity {
                 }
             });
 
+            mDone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+
             mMarkPaid.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
