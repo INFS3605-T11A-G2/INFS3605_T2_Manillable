@@ -34,7 +34,7 @@ public class ClientFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(getActivity().getApplicationContext(), CreateNewInvoice.class), 100);
+                startActivityForResult(new Intent(getActivity().getApplicationContext(), CreateNewClient.class), 100);
             }
         });
 
@@ -58,21 +58,9 @@ public class ClientFragment extends Fragment {
 
     private void loadClientList() {
         ClientDatabaseHelper clientDatabaseHelper = ClientDatabaseHelper.getDB(getActivity().getApplicationContext());
-        insertClients();
         List<Client> clientList = clientDatabaseHelper.clientDao().getAllClient();
 
         clientAdapter.setmClientList(clientList);
-    }
-
-    private void insertClients() {
-        ClientDatabaseHelper clientDatabaseHelper = ClientDatabaseHelper.getDB(getActivity().getApplicationContext());
-        if(!isDone) {
-            clientDatabaseHelper.clientDao().addClient(new Client("Patrick Diakos", "p.diakos@gmail.com", "0417498573"));
-            clientDatabaseHelper.clientDao().addClient(new Client("Bradley Driscoll", "b.driscoll@gmail.com", "0495876615"));
-            clientDatabaseHelper.clientDao().addClient(new Client("Nevin Liu", "n.liu@gmail.com", "0495876615"));
-            isDone = true;
-        }
-        Log.d(TAG, String.valueOf(isDone));
     }
 
     @Override

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateNewClient">
+
+    <ScrollView
+        android:id="@+id/scroll_view_client"
+        android:layout_width="match_parent"
+        android:layout_height="697dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:background="@color/grey">
+
+        <RelativeLayout
+            android:id="@+id/rel_layout_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rel_layout_client"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/client_name_client"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/txt_billToLabel"
+                    android:layout_alignStart="@+id/txt_billToLabel"
+                    android:layout_marginStart="-4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="12"
+                    android:hint="Enter Name"
+                    android:inputType="text"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:id="@+id/txt_billToLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Name" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_layout_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_layout_client"
+                android:layout_marginTop="15dp"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/client_emailAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/txt_emailAddress_client"
+                    android:layout_alignStart="@+id/txt_emailAddress_client"
+                    android:layout_marginStart="-4dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="12"
+                    android:hint="Enter Email"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:id="@+id/txt_emailAddress_client"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Email Address" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_layout_itemQuant_client"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_layout_item"
+                android:layout_marginTop="15dp"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/clientPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/txt_clientPhoneLabel"
+                    android:layout_alignStart="@+id/txt_clientPhoneLabel"
+                    android:layout_marginStart="-4dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="12"
+                    android:hint="Enter Phone Number"
+                    android:inputType="phone"
+                    android:padding="10dp" />
+
+                <TextView
+                    android:id="@+id/txt_clientPhoneLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Phone Number" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        style="@style/FloatingActionButtonStyle"
+        />
+
+    <TextView
+        android:id="@+id/txt_nextButton_client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button_client"
+        android:layout_alignTop="@+id/button_client"
+        android:layout_alignEnd="@+id/button_client"
+        android:layout_alignBottom="@+id/button_client"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:elevation="7dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
+
+
+    <ImageView
+        android:id="@+id/iv_closeIcon_client"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        app:srcCompat="@drawable/closeicon" />
+
+    <TextView
+        android:id="@+id/txt_dateLabel_client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_closeIcon_client"
+        android:layout_alignStart="@+id/iv_closeIcon_client"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter_light"
+        android:text="Date"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txt_createClient_client"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_dateLabel_client"
+        android:layout_alignStart="@+id/txt_dateLabel_client"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Create Client"
+        android:textColor="@color/black"
+        android:textSize="22dp" />
+
+</RelativeLayout>

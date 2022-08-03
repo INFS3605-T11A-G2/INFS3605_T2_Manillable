@@ -65,19 +65,6 @@
         android:layout_marginTop="-32dp"
         app:srcCompat="@drawable/filtericon" />
 
-    <TextView
-        android:id="@+id/txt_FilterName_clients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/iv_FilterIcon_clients"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="1dp"
-        android:layout_toEndOf="@+id/iv_FilterIcon_clients"
-        android:fontFamily="@font/inter_regular"
-        android:text="Sorted by"
-        android:textColor="@color/black" />
-
     <ImageView
         android:id="@+id/iv_ArrowDownIcon_clients"
         android:layout_width="12dp"

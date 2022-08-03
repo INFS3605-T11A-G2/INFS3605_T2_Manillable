@@ -181,7 +181,6 @@ public class CreateNewInvoice extends AppCompatActivity {
                 } else {
                     String formattedAmount = formatNumberCurrency(editAmount.getText().toString().substring(2));
 
-
                     try {
                         addNewInvoice(editName.getText().toString(), editItem.getText().toString(),
                                 editItemQuant.getText().toString(), editItemEa.getText().toString(),
