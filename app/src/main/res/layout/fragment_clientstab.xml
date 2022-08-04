@@ -12,7 +12,7 @@
         android:layout_below="@+id/txt_clients_clients"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="44dp"
-        android:layout_marginBottom="45dp">
+        android:layout_marginBottom="0dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_clientList"
